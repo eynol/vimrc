@@ -87,6 +87,7 @@ set softtabstop=2
 
 set confirm 
 
+set t_Co=256
 set background=dark
 colorscheme molokai
 
