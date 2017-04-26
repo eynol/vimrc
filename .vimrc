@@ -1,3 +1,10 @@
+"   Tern config
+let g:tern_map_keys=1
+let g:tern_show_argument_hints='on_move'
+let g:tern_map_prefix=','
+
+
+
 set nocompatible              " be iMproved, required
 filetype off                  " required
 
@@ -12,7 +19,8 @@ Plugin 'VundleVim/Vundle.vim'
 
 
 
-
+" color bracket
+Plugin 'kien/rainbow_parentheses.vim'
 
 " Syntax For Nginx
 Plugin 'nginx.vim'
@@ -24,13 +32,14 @@ Bundle 'gorodinskiy/vim-coloresque'
 Bundle 'mattn/emmet-vim'
 Plugin 'digitaltoad/vim-pug'
 
-" JAVASCRIPT 
+" JAVASCRIPT
 Bundle 'elzr/vim-json'
 Bundle 'groenewege/vim-less'
 Bundle 'pangloss/vim-javascript'
 Bundle 'briancollins/vim-jst'
 Bundle 'kchmck/vim-coffee-script'
 "Plugin 'othree/javascript-libraries-syntax.vim'
+Plugin 'ternjs/tern_for_vim'
 
 
 
@@ -40,7 +49,7 @@ Plugin 'sheerun/vim-polyglot'
 " UI Stuff
 Plugin 'itchyny/lightline.vim'
 
-" Plug for git 
+" Plug for git
 Plugin 'tpope/vim-fugitive'
 
 
@@ -76,17 +85,32 @@ set history=1000                    " Store a ton of history (default is 20)
 set spell                           " Spell checking on
 syntax on
 set cursorline
-" set cursorcolumn  
+" set cursorcolumn
 set autoindent
 set fencs=utf-8,gbk,c935
 
-set expandtab      
-set tabstop=2     
-set shiftwidth=2 
-set softtabstop=2   
+set expandtab
+set tabstop=2
+set shiftwidth=2
+set softtabstop=2
 
-set confirm 
+set confirm
+set showcmd
 
+" Key maps
+let mapleader = "\<Space>"
+
+" Write files
+nnoremap <Leader>w :w<CR>
+nnoremap <Leader>sw :w !sudo tee %<CR>
+nnoremap <F4> :%s/\s\+$//<cr>:let @/=''<CR>
+
+
+
+
+set sessionoptions+=unix,slash
+
+" terminal setting
 set t_Co=256
 set background=dark
 colorscheme molokai
@@ -104,13 +128,20 @@ set foldmethod=indent
 set foldlevel=99
 
 
+" netrw list style
+"
+"
+"
+let g:netrw_liststyle=3
+
+
 set encoding=utf-8
 set laststatus=2
 
 if has('gui_running')
-	set guifont=Consolas:h12:cANSI:qDRAFT
-	source $VIMRUNTIME/delmenu.vim  
-	source $VIMRUNTIME/menu.vim  
+  set guifont=Consolas:h12:cANSI:qDRAFT
+  source $VIMRUNTIME/delmenu.vim
+  source $VIMRUNTIME/menu.vim
 endif
 
 " light line setting
@@ -176,7 +207,8 @@ function! LightlineMode()
 endfunction
 
 
-" abbreviate 
+
+" abbreviate
 iabbrev #b /****************************************
 iabbrev #e <Space>****************************************/
 
