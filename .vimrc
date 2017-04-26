@@ -17,8 +17,6 @@ call vundle#begin()
 " let Vundle manage Vundle, required
 Plugin 'VundleVim/Vundle.vim'
 
-
-
 " color bracket
 Plugin 'kien/rainbow_parentheses.vim'
 
@@ -52,17 +50,12 @@ Plugin 'itchyny/lightline.vim'
 " Plug for git
 Plugin 'tpope/vim-fugitive'
 
-
 " Plugin 'tpope/vim-fugitive'
 " Plugin 'L9'
 " Plugin 'git://git.wincent.com/command-t.git'
 " Plugin 'file:///home/gmarik/path/to/plugin'
 " Plugin 'rstacruz/sparkup', {'rtp': 'vim/'}
 " Plugin 'ascenator/L9', {'name': 'newL9'}
-
-
-
-
 call vundle#end()            " required
 filetype plugin indent on    " required
 " To ignore plugin indent changes, instead use:
@@ -76,6 +69,8 @@ filetype plugin indent on    " required
 "
 " see :h vundle for more details or wiki for FAQ
 
+
+" VIM primary setting
 set number
 set backspace=indent,eol,start
 set hlsearch
@@ -93,50 +88,40 @@ set expandtab
 set tabstop=2
 set shiftwidth=2
 set softtabstop=2
-
+set splitright                  " Puts new vsplit windows to the right of the current
+set splitbelow                  " Puts new split windows to the bottom of the current
 set confirm
 set showcmd
+set encoding=utf-8
+set laststatus=2
 
-" Key maps
+" Map Leader key to <space>
 let mapleader = "\<Space>"
 
-" Write files
+" Save files
 nnoremap <Leader>w :w<CR>
 nnoremap <Leader>sw :w !sudo tee %<CR>
+" Strip whitespace
 nnoremap <F4> :%s/\s\+$//<cr>:let @/=''<CR>
 
 
 
-
+" Make Session file compatible
 set sessionoptions+=unix,slash
-
 " terminal setting
 set t_Co=256
+" UI & color scheme
 set background=dark
 colorscheme molokai
 
 
 set foldenable
-" 折叠方法
-" manual    手工折叠
-" indent    使用缩进表示折叠
-" expr      使用表达式定义折叠
-" syntax    使用语法定义折叠
-" diff      对没有更改的文本进行折叠
-" marker    使用标记进行折叠, 默认标记是 {{{ 和 }}}
-set foldmethod=indent
+set foldmethod=indent       "  see :help foldmethod
 set foldlevel=99
 
 
-" netrw list style
-"
-"
-"
+" Netrw list style: tree
 let g:netrw_liststyle=3
-
-
-set encoding=utf-8
-set laststatus=2
 
 if has('gui_running')
   set guifont=Consolas:h12:cANSI:qDRAFT
@@ -218,3 +203,18 @@ iabbrev funtcion function
 iabbrev funtion function
 iabbrev funcetion function
 iabbrev funciton function
+
+
+" Functions if needed
+" Allow to trigger background
+function! ToggleBG()
+  let s:tbg = &background
+  " Inversion
+  if s:tbg == "dark"
+    set background=light
+    colorscheme morning
+  else
+    set background=dark
+    colorscheme molokai
+  endif
+endfunction
