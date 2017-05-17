@@ -39,9 +39,13 @@ Bundle 'kchmck/vim-coffee-script'
 "Plugin 'othree/javascript-libraries-syntax.vim'
 Plugin 'ternjs/tern_for_vim'
 
+" HTML/CSS/JAVASCRIPT Beautify
+Plugin 'maksimr/vim-jsbeautify'
 
-
+" themes
 Plugin 'tomasr/molokai'
+
+" syntax highlight
 Plugin 'sheerun/vim-polyglot'
 
 " UI Stuff
@@ -104,6 +108,16 @@ nnoremap <Leader>sw :w !sudo tee %<CR>
 " Strip whitespace
 nnoremap <F4> :%s/\s\+$//<cr>:let @/=''<CR>
 
+" for javascript beautify key bindings
+autocmd FileType javascript noremap <buffer>  <leader>bf :call JsBeautify()<cr>
+" for json
+autocmd FileType json noremap <buffer> <leader>bf :call JsonBeautify()<cr>
+" for jsx
+autocmd FileType jsx noremap <buffer> <leader>bf :call JsxBeautify()<cr>
+" for html
+autocmd FileType html noremap <buffer> <leader>bf :call HtmlBeautify()<cr>
+" for css or scss
+autocmd FileType css noremap <buffer> <leader>bf :call CSSBeautify()<cr>
 
 
 " Make Session file compatible
