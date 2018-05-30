@@ -18,11 +18,13 @@
     guicolors = true
     # Disable statusline separator, if you want to use other value, please
     # install nerd fonts
-    statusline_separator = "arrow"
-    statusline_inactive_separator = "arrow"
+    statusline_separator = "nil"
+    statusline_inactive_separator = "nil"
     buffer_index_type = 4
+    window_index_type = 4
+    windows_index_type = 4
     enable_tabline_filetype_icon = true
-    statusline_display_mode = false
+    statusline_display_mode = true
 
 # Enable autocomplete layer
 [[layers]]
@@ -36,10 +38,43 @@ default_position = 'top'
 default_height = 30
 
 [[layers]]
+name = "colorscheme"
+
+[[layers]]
+name = "git"
+
+[[layers]]
+name = "edit"
+
+[[layers]]
+name = "lsp"
+
+[[layers]]
+name = "github"
+
+[[layers]]
 name = "lang#go"
 
 [[layers]]
-name = "lang#xml"
+name = "lang#javascript"
+
+[[layers]]
+name = "lang#typescript"
+
+[[layers]]
+name = "lang#json"
+
+[[layers]]
+name = "lang#html"
+
+[[layers]]
+name = "lang#markdown"
+
+[[layers]]
+name = "lang#python"
+
+[[layers]]
+name = "lang#ruby"
 
 [[layers]]
 name = "lang#sh"
