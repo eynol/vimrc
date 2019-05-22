@@ -1,7 +1,5 @@
 
 set nocompatible              " be iMproved, required
-filetype off                  " required
-"set rtp+=~/.vim/bundle/Vundle.vim
 filetype plugin indent on    " required
 
 set number
@@ -28,15 +26,6 @@ set showcmd
 set encoding=utf-8
 set laststatus=2
 
-" Map Leader key to <space>
-let mapleader = "\<Space>"
-
-" Save files
-nnoremap <Leader>fw :w<CR>
-nnoremap <Leader>fW :w !sudo tee %<CR>
-" Strip whitespace
-nnoremap <F4> :%s/\s\+$//<cr>:let @/=''<CR>
-
 " Make Session file compatible
 set sessionoptions+=unix,slash
 " terminal setting
@@ -53,3 +42,44 @@ if has('gui_running')
   " source $VIMRUNTIME/delmenu.vim
   " source $VIMRUNTIME/menu.vim
 endif
+
+
+
+if empty(glob('~/.vim/autoload/plug.vim'))
+  silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
+    \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+  autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
+endif
+
+
+call plug#begin('~/.vim/plugged')
+Plug 'Shougo/unite.vim'
+Plug 'junegunn/vim-plug'
+Plug 'Shougo/vimfiler.vim'
+call plug#end()
+
+
+
+let g:vimfiler_as_default_explorer = 1
+autocmd VimEnter * if !argc() | VimFiler | endif
+let g:loaded_netrwPlugin = 1
+
+
+" Map Leader key to <space>
+let mapleader = "\<Space>"
+
+" Save files
+nnoremap <Leader>fw :w<CR>
+nnoremap <Leader>fW :w !sudo tee %<CR>
+" Strip whitespace
+nnoremap <F4> :%s/\s\+$//<cr>:let @/=''<CR>
+
+
+inoremap jk <Esc>
+nnoremap <Leader>ft  :VimFiler -buffer-name=explorer -split -simple -winwidth=40 -toggle -no-quit<CR>
+
+
+nnoremap <C-j> <C-w>j
+nnoremap <C-k> <C-w>k
+nnoremap <C-h> <C-w>h
+nnoremap <C-l> <C-w>l
