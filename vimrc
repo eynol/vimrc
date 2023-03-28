@@ -78,6 +78,7 @@ Plug 'junegunn/vim-easy-align'
 " Plug 'preservim/nerdtree', { 'on': 'NERDTreeToggle' }
 " Plug 'tpope/vim-fireplace', { 'for': 'clojure' }
 
+Plug 'tpope/vim-unimpaired'
 " Using a non-default branch
 " Plug 'rdnetto/YCM-Generator', { 'branch': 'stable' }
 
@@ -88,7 +89,7 @@ Plug 'junegunn/vim-easy-align'
 " Plug 'nsf/gocode', { 'tag': 'v.20150303', 'rtp': 'vim' }
 
 " Plugin outside ~/.vim/plugged with post-update hook
-" Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 
 " Unmanaged plugin (manually installed and updated)
 " Plug '~/my-prototype-plugin'
