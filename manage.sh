@@ -7,24 +7,29 @@ function install() {
     if [ -e ~/.vim/vimrc ]; then
         echo exist
     else
-        ln $PWD/vimrc ~/.vim/vimrc
+        ln -v $PWD/vimrc ~/.vim/vimrc
     fi
 
     if [ -e ~/.config/nvim/init.vim ]; then
         echo exist
     else
-        ln $PWD/init.vim ~/.config/nvim/init.vim
+        ln -v $PWD/init.vim ~/.config/nvim/init.vim
     fi
 
 }
 
 function uninstall() {
-    if [ -e ~/.vim/vimrc ]; then
-        rm ~/.vim/vimrc
-    else
-        echo ni #ln $PWD/vimrc ~/.vim/vimrc
-    fi
-
+    filesToDel=(
+        ~/.vim/vimrc
+        ~/.config/nvim/init.vim
+    )
+    for file in "${filesToDel[@]}"; do
+        if [ -f $file ]; then
+            rm -v $file
+        else
+            echo already deleted $file #ln $PWD/vimrc ~/.vim/vimrc
+        fi
+    done
 }
 
 if [ -z "$*" ]; then
