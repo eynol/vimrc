@@ -7,13 +7,13 @@ function install() {
     if [ -e ~/.vim/vimrc ]; then
         echo exist
     else
-        ln -v $PWD/vimrc ~/.vim/vimrc
+        ln -v -s $PWD/vimrc ~/.vim/vimrc
     fi
 
     if [ -e ~/.config/nvim/init.vim ]; then
         echo exist
     else
-        ln -v $PWD/init.vim ~/.config/nvim/init.vim
+        ln -v -s $PWD/init.vim ~/.config/nvim/init.vim
     fi
 
 }

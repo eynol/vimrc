@@ -82,7 +82,7 @@ if empty(glob('~/.vim/autoload/plug.vim'))
 endif
 
 
-call plug#begin()
+call plug#begin('~/.vim/plugged')
 " The default plugin directory will be as follows:
 "   - Vim (Linux/macOS): '~/.vim/plugged'
 "   - Vim (Windows): '~/vimfiles/plugged'
@@ -154,8 +154,8 @@ call plug#end()
 
 " COC 
 " Some servers have issues with backup files, see #649
-set nobackup
-set nowritebackup
+" set nobackup
+" set nowritebackup
 
 " Having longer updatetime (default is 4000 ms = 4s) leads to noticeable
 " delays and poor user experience
@@ -187,9 +187,9 @@ endfunction
 
 " Use <c-space> to trigger completion
 if has('nvim')
-  inoremap <silent><expr> <c-space> coc#refresh()
+  inoremap <silent><expr> <c-o> coc#refresh()
 else
-  inoremap <silent><expr> <c-@> coc#refresh()
+  inoremap <silent><expr> <c-o> coc#refresh()
 endif
 
 " Use `[g` and `]g` to navigate diagnostics
@@ -204,7 +204,7 @@ nmap <silent> gi <Plug>(coc-implementation)
 nmap <silent> gr <Plug>(coc-references)
 
 " Use K to show documentation in preview window
-nnoremap <silent> K :call ShowDocumentation()<CR>
+nnoremap <silent> <Leader>h :call ShowDocumentation()<CR>
 
 function! ShowDocumentation()
   if CocAction('hasProvider', 'hover')
