@@ -5,7 +5,7 @@ filetype plugin indent on                  " required
 
 
 " VIM primary setting
-" set numbero
+set number
 set relativenumber 
 set backspace=indent,eol,start
 
@@ -129,10 +129,15 @@ Plug 'tpope/vim-unimpaired'
 " Plugin outside ~/.vim/plugged with post-update hook
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
+" Ranger
+Plug 'francoiscabrol/ranger.vim'
+if has('nvim') 
+  Plug 'rbgrouleff/bclose.vim'
+endif
 " Unmanaged plugin (manually installed and updated)
 " Plug '~/my-prototype-plugin'
-
-
+Plug 'voldikss/vim-floaterm'
+Plug 'mhinz/vim-startify'
 " Font end plugin
 " post install (yarn install | npm install) then load plugin only for editing supported files
 Plug 'prettier/vim-prettier', {
@@ -329,7 +334,7 @@ nnoremap <F4> :%s/\s\+$//<cr>:let @/=''<CR>
 inoremap jk <Esc>
 nmap <Leader>ef <Plug>(PrettierAsync)
 
-
+let g:floaterm_keymap_new = '<Leader>ft'
 
 " Insert mode completion
 function! FindTopGitRoot()
