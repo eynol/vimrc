@@ -153,6 +153,7 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'}
 "
 Plug 'NLKNguyen/papercolor-theme'
 
+Plug 'APZelos/blamer.nvim'
 " Initialize plugin system
 " - Automatically executes `filetype plugin indent on` and `syntax enable`.
 call plug#end()
@@ -160,12 +161,16 @@ call plug#end()
 "   filetype indent off   " Disable file-type-specific indentation
 "   syntax off            " Disable syntax highlighting
 
+let g:blamer_enabled = 1
+let g:blamer_date_format = '%y-%m-%d %H:%M'
+let g:blamer_template = '<committer> <author-mail> <committer-time> • <summary>'
 
 " COC 
 " Some servers have issues with backup files, see #649
 " set nobackup
 " set nowritebackup
 
+set hidden
 " Having longer updatetime (default is 4000 ms = 4s) leads to noticeable
 " delays and poor user experience
 set updatetime=300
