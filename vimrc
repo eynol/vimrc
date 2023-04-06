@@ -185,6 +185,7 @@ let g:coc_global_extensions = [
       \ 'coc-css',
       \ 'coc-cssmodules',
       \ 'coc-docker',
+      \ 'coc-pyright',
       \ 'coc-explorer'
       \ ]
 
@@ -338,15 +339,15 @@ nnoremap <silent><nowait> <space>ve  :<C-u>CocList extensions<cr>
 " Show commands
 nnoremap <silent><nowait> <space>vc  :<C-u>CocList commands<cr>
 " Find symbol of current document
-nnoremap <silent><nowait> <space>o  :<C-u>CocList outline<cr>
+nnoremap <silent><nowait> <space>vo  :<C-u>CocList outline<cr>
 " Search workspace symbols
-nnoremap <silent><nowait> <space>s  :<C-u>CocList -I symbols<cr>
+nnoremap <silent><nowait> <space>vs  :<C-u>CocList -I symbols<cr>
 " Do default action for next item
 nnoremap <silent><nowait> <space>j  :<C-u>CocNext<CR>
 " Do default action for previous item
 nnoremap <silent><nowait> <space>k  :<C-u>CocPrev<CR>
 " Resume latest coc list
-nnoremap <silent><nowait> <space>p  :<C-u>CocListResume<CR>
+nnoremap <silent><nowait> <space>vp  :<C-u>CocListResume<CR>
 
 
 
@@ -355,7 +356,8 @@ nmap tt :RangerWorkingDirectoryExistingOrNewTab<CR>
 
 " Save files
 nnoremap <Leader>fs :w<CR> " file save
-nnoremap <Leader>fws :w !sudo tee %<CR>
+nnoremap <Leader>fS :w !sudo tee %<CR>
+
 
 
 " Config file
@@ -368,7 +370,8 @@ nnoremap <F4> :%s/\s\+$//<cr>:let @/=''<CR>
 inoremap jk <Esc>
 nmap <Leader>ef <Plug>(PrettierAsync)
 
-let g:floaterm_keymap_new = '<Leader>ft'
+let g:floaterm_keymap_toggle = '<Leader>ftt'
+let g:floaterm_keymap_new = '<Leader>ftn'
 
 " Insert mode completion
 function! FindTopGitRoot()
@@ -401,8 +404,11 @@ function! s:find_files()
     endif
 endfunction
 command! ProjectFiles execute s:find_files()
-nnoremap <leader>p :ProjectFiles<CR>
-
+nnoremap <leader>ffp :ProjectFiles<CR>
+nnoremap <leader>ffr :FzfRg<CR>
+nnoremap <leader>ffrr ve"vy:FzfRg<CR><C-\><C-n>"vpi
+nnoremap <leader>ffa :FzfAg<CR>
+nnoremap <leader>ffaa ve"vy:FzfAg<CR><C-\><C-n>"vpi
 
 set background=dark
 colorscheme PaperColor
@@ -421,5 +427,5 @@ function! ToggleBG()
   endif
 endfunction
 command! ToggleBG execute ToggleBG()
-nnoremap <leader>vc :ToggleBG<CR>
+nnoremap <leader>vtb :ToggleBG<CR>
 
