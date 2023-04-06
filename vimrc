@@ -167,6 +167,9 @@ call plug#end()
 "   filetype indent off   " Disable file-type-specific indentation
 "   syntax off            " Disable syntax highlighting
 
+" Map Leader key to <space>
+let mapleader = "\<Space>"
+
 let g:blamer_enabled = 1
 let g:blamer_date_format = '%y-%m-%d %H:%M'
 let g:blamer_template = '<committer> <author-mail> <committer-time> • <summary>'
@@ -346,8 +349,6 @@ nnoremap <silent><nowait> <space>k  :<C-u>CocPrev<CR>
 nnoremap <silent><nowait> <space>p  :<C-u>CocListResume<CR>
 
 
-" Map Leader key to <space>
-let mapleader = "\<Space>"
 
 let g:ranger_map_keys = 0
 nmap tt :RangerWorkingDirectoryExistingOrNewTab<CR>
