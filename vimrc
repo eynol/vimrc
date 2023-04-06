@@ -57,7 +57,7 @@ set wildmenu wildmode=list:longest,full
 " Netrw list style: tree
 let g:netrw_liststyle=3
 let g:netrw_maxfilenamelen= 40
-" let g:fzf_command_prefix = 'Fzf'
+let g:fzf_command_prefix = 'Fzf'
 "
 let g:prettier#config#single_quote = 'true'
 let g:prettier#config#trailing_comma = 'all'
@@ -138,6 +138,7 @@ endif
 " Plug '~/my-prototype-plugin'
 Plug 'voldikss/vim-floaterm'
 Plug 'mhinz/vim-startify'
+
 " Font end plugin
 " post install (yarn install | npm install) then load plugin only for editing supported files
 Plug 'prettier/vim-prettier', {
@@ -148,6 +149,9 @@ Plug 'prettier/vim-prettier', {
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
 
+" THEME 
+"
+Plug 'NLKNguyen/papercolor-theme'
 
 " Initialize plugin system
 " - Automatically executes `filetype plugin indent on` and `syntax enable`.
@@ -319,6 +323,9 @@ nnoremap <silent><nowait> <space>p  :<C-u>CocListResume<CR>
 " Map Leader key to <space>
 let mapleader = "\<Space>"
 
+let g:ranger_map_keys = 0
+nmap tt :RangerWorkingDirectoryExistingOrNewTab<CR>
+
 " Save files
 nnoremap <Leader>fs :w<CR> " file save
 nnoremap <Leader>fws :w !sudo tee %<CR>
@@ -370,6 +377,9 @@ command! ProjectFiles execute s:find_files()
 nnoremap <leader>p :ProjectFiles<CR>
 
 
+set background=dark
+colorscheme PaperColor
+
 " Functions if needed
 " Allow to trigger background
 function! ToggleBG()
@@ -377,9 +387,12 @@ function! ToggleBG()
   " Inversion
   if s:tbg == "dark"
     set background=light
-    colorscheme morning
+    colorscheme PaperColor
   else
     set background=dark
-    colorscheme molokai
+    colorscheme PaperColor
   endif
 endfunction
+command! ToggleBG execute ToggleBG()
+nnoremap <leader>vc :ToggleBG<CR>
+
