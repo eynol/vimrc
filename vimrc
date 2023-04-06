@@ -39,8 +39,8 @@ set modelines=0
 
 " reload files changed outside of Vim not currently modified in Vim (needs below)
 set autoread
-" set splitright                  " Puts new vsplit windows to the right of the current
-" set splitbelow                  " Puts new split windows to the bottom of the current
+set splitright                  " Puts new vsplit windows to the right of the current
+set splitbelow                  " Puts new split windows to the bottom of the current
 set confirm
 
 set laststatus=2
