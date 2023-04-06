@@ -39,8 +39,8 @@ set modelines=0
 
 " reload files changed outside of Vim not currently modified in Vim (needs below)
 set autoread
-set splitright                  " Puts new vsplit windows to the right of the current
-set splitbelow                  " Puts new split windows to the bottom of the current
+" set splitright                  " Puts new vsplit windows to the right of the current
+" set splitbelow                  " Puts new split windows to the bottom of the current
 set confirm
 
 set laststatus=2
@@ -69,7 +69,15 @@ if has('gui_running')
   " source $VIMRUNTIME/delmenu.vim
   " source $VIMRUNTIME/menu.vim
 endif
+if !has('gui_running')
+  set t_Co=256
+endif
 
+" airline
+set noshowmode
+let g:lightline = {
+      \ 'colorscheme': 'PaperColor',
+      \ }
 
 
 " Plugin manager install
@@ -151,9 +159,7 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
 " THEME 
 "
-Plug 'NLKNguyen/papercolor-theme'
-
-Plug 'APZelos/blamer.nvim'
+Plug 'NLKNguyen/papercolor-theme' | Plug 'itchyny/lightline.vim' | Plug 'APZelos/blamer.nvim'
 " Initialize plugin system
 " - Automatically executes `filetype plugin indent on` and `syntax enable`.
 call plug#end()
@@ -166,6 +172,19 @@ let g:blamer_date_format = '%y-%m-%d %H:%M'
 let g:blamer_template = '<committer> <author-mail> <committer-time> • <summary>'
 
 " COC 
+let g:coc_global_extensions = [ 
+      \ 'coc-json', 
+      \ 'coc-git', 
+      \ 'coc-tsserver', 
+      \ 'coc-sh', 
+      \ 'coc-yaml',
+      \ 'coc-yank', 
+      \ 'coc-css',
+      \ 'coc-cssmodules',
+      \ 'coc-docker',
+      \ 'coc-explorer'
+      \ ]
+
 " Some servers have issues with backup files, see #649
 " set nobackup
 " set nowritebackup
@@ -173,7 +192,7 @@ let g:blamer_template = '<committer> <author-mail> <committer-time> • <summary
 set hidden
 " Having longer updatetime (default is 4000 ms = 4s) leads to noticeable
 " delays and poor user experience
-set updatetime=300
+set updatetime=102
 
 " Always show the signcolumn, otherwise it would shift the text each time
 " diagnostics appear/become resolved
@@ -263,6 +282,8 @@ nmap <silent> <leader>re <Plug>(coc-codeaction-refactor)
 xmap <silent> <leader>r  <Plug>(coc-codeaction-refactor-selected)
 nmap <silent> <leader>r  <Plug>(coc-codeaction-refactor-selected)
 
+nmap <silent><nowait> <leader>e :CocCommand explorer<CR>
+
 " Run the Code Lens action on the current line
 nmap <leader>cl  <Plug>(coc-codelens-action)
 
@@ -308,11 +329,11 @@ set statusline^=%{coc#status()}%{get(b:,'coc_current_function','')}
 
 " Mappings for CoCList
 " Show all diagnostics
-nnoremap <silent><nowait> <space>a  :<C-u>CocList diagnostics<cr>
+nnoremap <silent><nowait> <space>va  :<C-u>CocList diagnostics<cr>
 " Manage extensions
-nnoremap <silent><nowait> <space>e  :<C-u>CocList extensions<cr>
+nnoremap <silent><nowait> <space>ve  :<C-u>CocList extensions<cr>
 " Show commands
-nnoremap <silent><nowait> <space>c  :<C-u>CocList commands<cr>
+nnoremap <silent><nowait> <space>vc  :<C-u>CocList commands<cr>
 " Find symbol of current document
 nnoremap <silent><nowait> <space>o  :<C-u>CocList outline<cr>
 " Search workspace symbols
